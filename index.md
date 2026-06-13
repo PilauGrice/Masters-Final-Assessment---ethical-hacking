@@ -6,9 +6,9 @@ permalink: /
 # Technical Appendix: Containerized DMZ Security Audit Lab
 **Student ID:** 2512782
 **Module:** Ethical Hacking  
-**Academic Term:** Final Assessment 
+**Academic Term:** Final Assessment   
 **Platform Environment:** Local Docker Sandbox Infrastructure  
-**Date:** June 2026
+**Date:** June 2026   
 
 ---
 
