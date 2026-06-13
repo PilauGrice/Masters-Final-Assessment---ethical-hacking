@@ -4,42 +4,27 @@ permalink: /
 ---
 
 # Technical Appendix: Containerized DMZ Security Audit Lab
-**Student ID:** [Insert Your Student ID Here]  
-**Module:** Advanced Network Security (MSc Computer Science)  
+**Student ID:** 2512782
+**Module:** Ethical Hacking  
+**Academic Term:** Final Assessment 
+**Platform Environment:** Local Docker Sandbox Infrastructure  
 **Date:** June 2026
 
 ---
 
 ## 📁 Repository Overview
-This repository serves as the official, unedited technical evidence locker for the multi-subnet penetration testing assessment. It archives baseline configurations, environment verification steps, initial application fuzzing vectors, and successful exploitation payloads.
-
+This repository serves as the official, unedited technical evidence locker for final assignment for ethical hacking. It includes all screenshots that are able to be viewed in highier quality.
 ---
-
-## 🗺️ Lab Infrastructure Layout
-The lab environment was programmatically provisioned using Docker Compose to ensure absolute reproducibility. The environment isolates assets across three distinct virtual bridge subnets to simulate a corporate enterprise tiering framework.
-
-| Subnet Interface Name | Network Subnet Range | Connected Container Nodes | Architectural Role |
-| :--- | :--- | :--- | :--- |
-| `cyber-lab_external_net` | `192.168.240.0/24` | `attacker-kali`, `dmz-gateway` | Public Facing Ingress Segment |
-| `cyber-lab_dmz_net` | `192.168.241.0/24` | `dmz-gateway`, `victim-ubuntu`, `victim-dvwa`, `victim-juiceshop` | Isolated Application Hosting Tier |
-| `cyber-lab_admin_net` | `192.168.243.0/24` | `internal-db`, `admin-network` | Restricted Out-of-Band Database Tier |
-
----
-
-## 🖼️ Telemetry & Exploitation Evidence Index
-
-### Phase 1: Environmental Provisioning & Verification
-The laboratory orchestration file was compiled, and containers were spawned into a pristine state. Baseline cross-subnet communication paths were verified via interactive ICMP loops before any offensive probes were fired.
 
 #### 1. Container Infrastructure Initialization
 * **Filename:** `01_docker_compose_up.png`
-* **Technical Value:** Confirms error-free execution of the orchestration engine, creating 4 custom networks and launching 13 independent microservice containers successfully.
+* **Technical Value:** Confirms the creation of four error free custom networks and launching 13 independent microservice containers successfully.
 
 ![01_docker_compose_up](01_docker_compose_up.png)
 
 #### 2. Cross-Subnet ICMP Routing Validation
 * **Filename:** `02_network_connectivity_ping.png`
-* **Technical Value:** Proves active transport-layer routing from the Attacker space across all targeted infrastructure layers (`192.168.240.20`, `192.168.241.99`, and `192.168.241.10`).
+* **Technical Value:** Proves active routing from the Attacker space across all targeted infrastructure layers (`192.168.240.20`, `192.168.241.99`, and `192.168.241.10`).
 
 ![02_network_connectivity_ping](02_network_connectivity_ping.png)
 
@@ -51,14 +36,11 @@ The laboratory orchestration file was compiled, and containers were spawned into
 
 #### 4. Automated Defensive Toolkit Provisioning
 * **Filename:** `04_tooling_installation.png`
-* **Technical Value:** Confirms dynamic runtime mirror package updates inside the Kali environment to install deployment frameworks (`gobuster`, `nmap`, `curl`).
+* **Technical Value:** Confirms installation of deployment frameworks (`gobuster`, `nmap`, `curl`).
 
 ![04_tooling_installation](04_tooling_installation.png)
 
 ---
-
-### Phase 2: Active Perimeter Reconnaissance & Fuzzing
-Network scanning engines were used to probe the public-facing gateway interface. Web application directory mapping was performed to isolate exposed resource points.
 
 #### 5. Active Port Status Mapping
 * **Filename:** `06_nmap_port80_scan.png`
