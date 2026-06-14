@@ -115,7 +115,6 @@ img:hover {
 /* ── Code blocks — must not exceed parent width ── */
 pre {
   background: #0d1117!important;
-  padding: 15px!important;
   display: block!important;
   /* scroll horizontally inside the box instead of pushing layout */
   overflow-x: auto!important;
@@ -140,7 +139,6 @@ code {
 /* Keep inline code from wrapping weirdly */
 p code, li code {
   background: #1c2128;
-  padding: 2px 5px;
   border-radius: 4px;
   white-space: nowrap;
 }
