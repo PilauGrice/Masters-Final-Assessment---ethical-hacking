@@ -533,7 +533,7 @@ document.addEventListener("DOMContentLoaded", function() {
   images.forEach(function(img) {
     img.onclick = function() {
       modal.style.display = "block";
-      modalImg.src = this.src;
+      modalImg.src = this.src; // This now correctly sets the modal image source to the clicked image's source
     }
   });
 
@@ -543,8 +543,8 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   // Close modal when clicking anywhere on the black background
-  modal.onclick = function(e) {
-    if (e.target !== modalImg) {
+  window.onclick = function(event) {
+    if (event.target == modal) {
       modal.style.display = "none";
     }
   }
