@@ -507,7 +507,7 @@ services:
 
 ---
 
-</div> <div id="imageModal" class="modal">
+<br><br><br> </div> <div id="imageModal" class="modal">
   <span class="close-modal">&times;</span>
   <img class="modal-content" id="expandedImg">
 </div>
@@ -519,6 +519,7 @@ document.addEventListener("DOMContentLoaded", function() {
   var images = document.querySelectorAll(".content img");
   var closeBtn = document.querySelector(".close-modal");
 
+  // Attach click events to all images in the content area
   images.forEach(function(img) {
     img.onclick = function() {
       modal.style.display = "block";
@@ -526,10 +527,12 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 
+  // Close modal when X is clicked
   closeBtn.onclick = function() {
     modal.style.display = "none";
   }
 
+  // Close modal when clicking anywhere on the black background
   modal.onclick = function(e) {
     if (e.target !== modalImg) {
       modal.style.display = "none";
