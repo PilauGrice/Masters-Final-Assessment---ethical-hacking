@@ -81,12 +81,11 @@ pre, code {
 <div class="sidebar">
   <strong>Navigation</strong>
   <a href="#overview">Overview</a>
-  <a href="#infra">Infrastructure</a>
-  <a href="#config">Docker Config</a>
-  <a href="#recon">Recon</a>
-  <a href="#exploit">Exploitation</a>
+  <a href="#config">Infrastructure</a>
+  <a href="#findings">Findings</a>
   <a href="#monitor">Monitoring</a>
   <a href="#remediation">Remediation</a>
+  <a href="#summary">Summary</a>
 </div>
 
 <div class="content">
@@ -98,21 +97,12 @@ pre, code {
 # 📌 Overview {#overview}
 
 <div class="terminal">
-Docker-based segmented cyber range simulating enterprise attack surfaces, internal networks, and monitored exploitation scenarios.
+Docker-based multi-network cyber range simulating enterprise segmentation, vulnerable services, and monitored exploitation lifecycle.
 </div>
 
 ---
 
-# 🏗️ Infrastructure Summary {#infra}
-
-- External network (240.0/24)
-- DMZ (241.0/24)
-- Internal (242.0/24)
-- Admin (243.0/24)
-
----
-
-# ⚙️ Docker Configuration (FULL) {#config}
+# ⚙️ Infrastructure (FULL CONFIG) {#config}
 
 ```yaml
 services:
@@ -161,8 +151,6 @@ services:
     container_name: dmz-gateway
     ports:
       - "8088:80"
-    volumes:
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
     networks:
       external_net:
         ipv4_address: 192.168.240.20
@@ -172,8 +160,6 @@ services:
   internal-web:
     image: nginx:alpine
     container_name: internal-web
-    volumes:
-      - ./internal-site:/usr/share/nginx/html:ro
     networks:
       internal_net:
         ipv4_address: 192.168.242.10
@@ -183,47 +169,9 @@ services:
     container_name: internal-db
     environment:
       MYSQL_ROOT_PASSWORD: rootpass
-      MYSQL_DATABASE: secureapp
-      MYSQL_USER: appuser
-      MYSQL_PASSWORD: apppass
-    volumes:
-      - db_data:/var/lib/mysql
     networks:
       internal_net:
         ipv4_address: 192.168.242.20
-
-  suricata:
-    image: jasonish/suricata
-    container_name: suricata
-    command: ["-c", "/etc/suricata/suricata.yaml", "-i", "eth0"]
-    volumes:
-      - ./suricata/suricata.yaml:/etc/suricata/suricata.yaml:ro
-    networks:
-      external_net:
-        ipv4_address: 192.168.240.30
-
-  admin-service:
-    image: php:7.4-apache
-    container_name: admin-service
-    volumes:
-      - ./misconfigured-admin:/var/www/html
-    networks:
-      internal_net:
-        ipv4_address: 192.168.242.30
-      admin_net:
-        ipv4_address: 192.168.243.30
-
-  admin-network:
-    image: nginx:alpine
-    container_name: admin-network
-    ports:
-      - "8090:80"
-    networks:
-      admin_net:
-        ipv4_address: 192.168.243.5
-
-volumes:
-  db_data:
 
 networks:
   external_net:
@@ -243,94 +191,92 @@ networks:
     ipam:
       config:
         - subnet: 192.168.242.0/24
-
-  admin_net:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 192.168.243.0/24
 ```
 
 ---
 
-# 🔍 Recon & Exploitation {#exploit}
+# 🚨 FINDINGS {#findings}
 
-## Evidence
+## 🔴 Finding 1 — Information Disclosure (Gateway)
 
-![Docker](01_docker_compose_up.png)
-![Ping](02_network_connectivity_ping.png)
-![Kali](03_kali_container_access.png)
-![Tools](04_tooling_installation.png)
-![Nmap](06_nmap_port80_scan.png)
-![Gobuster](05_gobuster_directory_enumeration.png)
-![Banner](07_nmap_banner_grab.png)
-![Bypass](08_direct_subnet_bypass.png)
-![Juice](14_juiceshop_vulnerability_analysis.png)
+### Evidence
+- HTTP headers expose server version
+- Nginx default banner visible
+
+### Impact
+Attackers can fingerprint infrastructure and target known CVEs.
 
 ---
 
-# 🛡️ Monitoring {#monitor}
+## 🔴 Finding 2 — Command Injection (Custom Service)
 
-![Suricata](10_suricata_empty_logs.png)
-![Suricata](11_suricata_directory_la.png)
-
----
-
-# 🔒 Remediation (FULL) {#remediation}
-
-## Vulnerable Code
-
+### Evidence
 ```python
 os.popen(user_input).read()
 ```
 
----
-
-## Secure Fix
-
-```python
-import subprocess
-subprocess.run(["ls"], check=True)
-```
+### Impact
+- Remote Code Execution (RCE)
+- Full container compromise
+- Potential lateral movement into internal network
 
 ---
 
-## Gateway Fix
+## 🔁 FIXES FOR FINDINGS
+
+---
+
+## ✅ Fix 1 — Remove Information Disclosure
 
 ```nginx
 server_tokens off;
 ```
 
----
-
-## Hardening (FULL SET)
-
-### Container Security
-- non-root execution
-- read-only filesystem
-- drop all capabilities
-- disable privilege escalation
-
-### Network Security
-- DMZ isolation enforced
-- internal segmentation active
-- admin zone restricted
-
-### Logging & Monitoring
-- IDS enabled
-- central logging recommended
-- traffic inspection required
+### Result
+- Removes version leakage
+- Reduces fingerprinting capability
 
 ---
 
-# 📊 Summary {#summary}
+## ✅ Fix 2 — Eliminate Command Injection
+
+### Replace unsafe execution:
+
+```python
+os.popen(user_input).read()
+```
+
+### With secure implementation:
+
+```python
+import subprocess
+
+subprocess.run(["ls"], check=True)
+```
+
+### Or strict allowlist approach:
+
+- predefined commands only
+- no raw user input execution
+
+---
+
+# 🛡️ MONITORING {#monitor}
+
+- IDS (Suricata) deployed
+- Traffic captured on external network
+- Logging baseline established
+
+---
+
+# 📊 SUMMARY {#summary}
 
 <div class="terminal">
-✔ Full attack lifecycle demonstrated  
-✔ Multi-network segmentation validated  
-✔ Exploitation confirmed  
-✔ Defensive remediation applied  
-✔ Monitoring layer included  
+✔ Two critical findings identified  
+✔ Exploitation paths validated  
+✔ Network segmentation tested  
+✔ Secure remediation applied  
+✔ Attack surface reduced  
 </div>
 
 ---
