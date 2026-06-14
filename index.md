@@ -94,14 +94,14 @@ img:hover {
 
 /* Overlap Fixes for Code Blocks */
 pre {
-  background: #0d1117 !important;
-  padding: 15px !important;
-  display: block !important;
-  overflow-x: auto !important;
-  border: 1px solid #30363d !important;
-  border-left: 4px solid #58a6ff !important;
-  border-radius: 6px !important;
-  max-width: 100% !important;
+  background: #0d1117!important;
+  padding: 15px!important;
+  display: block!important;
+  overflow-x: auto!important;
+  border: 1px solid #30363d!important;
+  border-left: 4px solid #58a6ff!important;
+  border-radius: 6px!important;
+  max-width: 100%!important;
 }
 
 code {
@@ -121,6 +121,7 @@ code {
   line-height: 1.6;
   max-width: 100%;
   overflow-x: auto;
+  white-space: pre;
 }
 
 /* Modal (Lightbox) Background */
@@ -180,94 +181,135 @@ code {
   <a href="#remediation">🔒 Remediation Code</a>
 </div>
 
-<div class="content" markdown="1">
+<div class="content">
 
-# 🧪 SECURITY LAB REPORT
-**Student ID:** 2512782  
-**Module:** Ethical Hacking (MSc Computer Science)  
+<h1>🧪 SECURITY LAB REPORT</h1>
+<p><strong>Student ID:</strong> 2512782<br>
+<strong>Module:</strong> Ethical Hacking (MSc Computer Science)</p>
 
----
+<hr>
 
 <h1 id="overview">📌 Overview</h1>
 
-<div class="terminal" markdown="1">
+<div class="terminal">
 [RANGE LOG] Docker-based multi-network cyber range online.
 [RANGE LOG] Simulating enterprise segmentation, vulnerable services, and monitored exploitation lifecycle.
 </div>
 
-This dashboard serves as the official, unedited technical evidence locker for the final multi-subnet penetration testing assessment. It archives high-resolution image telemetry, custom exploit targets, and configuration architectures to support the core report submission.
+<p>This dashboard serves as the official, unedited technical evidence locker for the final multi-subnet penetration testing assessment. It archives high-resolution image telemetry, custom exploit targets, and configuration architectures to support the core report submission.</p>
 
----
+<hr>
 
-<h1 id="evidence">🖼️ Telemetry & Exploitation Evidence Index</h1>
+<h1 id="evidence">🖼️ Telemetry &amp; Exploitation Evidence Index</h1>
 
-*(Click any image to expand it in full screen)*
+<p><em>(Click any image to expand it in full screen)</em></p>
 
-### Phase 1: Environmental Provisioning
-* **01_docker_compose_up.png:** Confirms error-free execution of the orchestration engine.
-![01_docker_compose_up](01_docker_compose_up.png)
-* **02_network_connectivity_ping.png:** Proves active transport-layer routing.
-![02_network_connectivity_ping](02_network_connectivity_ping.png)
-* **03_kali_container_access.png:** Documents secure execution access into `attacker-kali`.
-![03_kali_container_access](03_kali_container_access.png)
-* **04_tooling_installation.png:** Confirms deployment frameworks (`gobuster`, `nmap`, `curl`).
-![04_tooling_installation](04_tooling_installation.png)
+<h3>Phase 1: Environmental Provisioning</h3>
+<ul>
+  <li><strong>01_docker_compose_up.png:</strong> Confirms error-free execution of the orchestration engine.</li>
+</ul>
+<img src="01_docker_compose_up.png" alt="01_docker_compose_up">
+<ul>
+  <li><strong>02_network_connectivity_ping.png:</strong> Proves active transport-layer routing.</li>
+</ul>
+<img src="02_network_connectivity_ping.png" alt="02_network_connectivity_ping">
+<ul>
+  <li><strong>03_kali_container_access.png:</strong> Documents secure execution access into <code>attacker-kali</code>.</li>
+</ul>
+<img src="03_kali_container_access.png" alt="03_kali_container_access">
+<ul>
+  <li><strong>04_tooling_installation.png:</strong> Confirms deployment frameworks (<code>gobuster</code>, <code>nmap</code>, <code>curl</code>).</li>
+</ul>
+<img src="04_tooling_installation.png" alt="04_tooling_installation">
 
-### Phase 2: Active Perimeter Reconnaissance
-* **06_nmap_port80_scan.png:** Confirms Port 80/TCP is open on the ingress proxy.
-![06_nmap_port80_scan](06_nmap_port80_scan.png)
-* **05_gobuster_directory_enumeration.png:** Identifies upstream reverse proxy mounts.
-![05_gobuster_directory_enumeration](05_gobuster_directory_enumeration.png)
-* **07_nmap_banner_grab.png:** Documents an Information Disclosure flaw (`Server: nginx/1.29.6`).
-![07_nmap_banner_grab](07_nmap_banner_grab.png)
-* **09_nmap_filtered_db.png:** Verifies secure database tier (`192.168.243.20:3306`) responds as filtered.
-![09_nmap_filtered_db](09_nmap_filtered_db.png)
+<h3>Phase 2: Active Perimeter Reconnaissance</h3>
+<ul>
+  <li><strong>06_nmap_port80_scan.png:</strong> Confirms Port 80/TCP is open on the ingress proxy.</li>
+</ul>
+<img src="06_nmap_port80_scan.png" alt="06_nmap_port80_scan">
+<ul>
+  <li><strong>05_gobuster_directory_enumeration.png:</strong> Identifies upstream reverse proxy mounts.</li>
+</ul>
+<img src="05_gobuster_directory_enumeration.png" alt="05_gobuster_directory_enumeration">
+<ul>
+  <li><strong>07_nmap_banner_grab.png:</strong> Documents an Information Disclosure flaw (<code>Server: nginx/1.29.6</code>).</li>
+</ul>
+<img src="07_nmap_banner_grab.png" alt="07_nmap_banner_grab">
+<ul>
+  <li><strong>09_nmap_filtered_db.png:</strong> Verifies secure database tier (<code>192.168.243.20:3306</code>) responds as filtered.</li>
+</ul>
+<img src="09_nmap_filtered_db.png" alt="09_nmap_filtered_db">
 
-### Phase 3: Perimeter Bypass & Pre-Packaged Targets
-* **08_direct_subnet_bypass.png:** Proves critical network isolation failure bypassing Nginx.
-![08_direct_subnet_bypass](08_direct_subnet_bypass.png)
-* **14_juiceshop_vulnerability_analysis.png:** Gateway appending verbose banners to unhandled exceptions.
-![14_juiceshop_vulnerability_analysis](14_juiceshop_vulnerability_analysis.png)
-* **12_dvwa_blocked_injection.png** & **13_juiceshop_payload_probe.png:** Nginx securely dropping payloads.
-![12_dvwa_blocked_injection](12_dvwa_blocked_injection.png)
-![13_juiceshop_payload_probe](13_juiceshop_payload_probe.png)
+<h3>Phase 3: Perimeter Bypass &amp; Pre-Packaged Targets</h3>
+<ul>
+  <li><strong>08_direct_subnet_bypass.png:</strong> Proves critical network isolation failure bypassing Nginx.</li>
+</ul>
+<img src="08_direct_subnet_bypass.png" alt="08_direct_subnet_bypass">
+<ul>
+  <li><strong>14_juiceshop_vulnerability_analysis.png:</strong> Gateway appending verbose banners to unhandled exceptions.</li>
+</ul>
+<img src="14_juiceshop_vulnerability_analysis.png" alt="14_juiceshop_vulnerability_analysis">
+<ul>
+  <li><strong>12_dvwa_blocked_injection.png</strong> &amp; <strong>13_juiceshop_payload_probe.png:</strong> Nginx securely dropping payloads.</li>
+</ul>
+<img src="12_dvwa_blocked_injection.png" alt="12_dvwa_blocked_injection">
+<img src="13_juiceshop_payload_probe.png" alt="13_juiceshop_payload_probe">
 
-### Phase 4: Custom Target Breakout & Root Exploitation
-* **15_vulnerable_script_source.png:** deployment of the vulnerable web server code.
-![15_vulnerable_script_source](15_vulnerable_script_source.png)
-* **16_python_server_traffic_logs.png:** Python server runtime logs recording incoming hits.
-![16_python_server_traffic_logs](16_python_server_traffic_logs.png)
-* **17_rce_parameter_validation.png:** Proves unauthenticated remote command execution.
-![17_rce_parameter_validation](17_rce_parameter_validation.png)
-* **18_root_shell_pop.png:** Netcat listener catching an inbound administrative shell context.
-![18_root_shell_pop](18_root_shell_pop.png)
-* **19_filesystem_write_proof.png** & **20_filesystem_rmdir_cleanup.png:** Validates write permissions.
-![19_filesystem_write_proof](19_filesystem_write_proof.png)
-![20_filesystem_rmdir_cleanup](20_filesystem_rmdir_cleanup.png)
+<h3>Phase 4: Custom Target Breakout &amp; Root Exploitation</h3>
+<ul>
+  <li><strong>15_vulnerable_script_source.png:</strong> Deployment of the vulnerable web server code.</li>
+</ul>
+<img src="15_vulnerable_script_source.png" alt="15_vulnerable_script_source">
+<ul>
+  <li><strong>16_python_server_traffic_logs.png:</strong> Python server runtime logs recording incoming hits.</li>
+</ul>
+<img src="16_python_server_traffic_logs.png" alt="16_python_server_traffic_logs">
+<ul>
+  <li><strong>17_rce_parameter_validation.png:</strong> Proves unauthenticated remote command execution.</li>
+</ul>
+<img src="17_rce_parameter_validation.png" alt="17_rce_parameter_validation">
+<ul>
+  <li><strong>18_root_shell_pop.png:</strong> Netcat listener catching an inbound administrative shell context.</li>
+</ul>
+<img src="18_root_shell_pop.png" alt="18_root_shell_pop">
+<ul>
+  <li><strong>19_filesystem_write_proof.png</strong> &amp; <strong>20_filesystem_rmdir_cleanup.png:</strong> Validates write permissions.</li>
+</ul>
+<img src="19_filesystem_write_proof.png" alt="19_filesystem_write_proof">
+<img src="20_filesystem_rmdir_cleanup.png" alt="20_filesystem_rmdir_cleanup">
 
-### Phase 5: Incident Detection & Forensic Audit
-* **10_suricata_empty_logs.png** & **11_suricata_directory_la.png:** Confirms a critical defensive blindspot.
-![10_suricata_empty_logs](10_suricata_empty_logs.png)
-![11_suricata_directory_la](11_suricata_directory_la.png)
+<h3>Phase 5: Incident Detection &amp; Forensic Audit</h3>
+<ul>
+  <li><strong>10_suricata_empty_logs.png</strong> &amp; <strong>11_suricata_directory_la.png:</strong> Confirms a critical defensive blindspot.</li>
+</ul>
+<img src="10_suricata_empty_logs.png" alt="10_suricata_empty_logs">
+<img src="11_suricata_directory_la.png" alt="11_suricata_directory_la">
 
-### Phase 6: Mitigation & Re-test Validation
-* **21_nginx_banner_fixed.png:** Confirms `server_tokens off;` successfully masks proxy version.
-![21_nginx_banner_fixed](21_nginx_banner_fixed.png)
-* **22_gateway_bypass_blocked.png:** Proves network segmentation and `iptables` rules block direct DMZ routing.
-![22_gateway_bypass_blocked](22_gateway_bypass_blocked.png)
-* **23_python_rce_blocked.png:** Validates Python `subprocess` strict allowlist rejecting Netcat payload.
-![23_python_rce_blocked](23_python_rce_blocked.png)
-* **24_python_rce_logs.png:** Server-side log validation of blocked payload execution.
-![24_python_rce_logs](24_python_rce_logs.png)
+<h3>Phase 6: Mitigation &amp; Re-test Validation</h3>
+<ul>
+  <li><strong>21_nginx_banner_fixed.png:</strong> Confirms <code>server_tokens off;</code> successfully masks proxy version.</li>
+</ul>
+<img src="21_nginx_banner_fixed.png" alt="21_nginx_banner_fixed">
+<ul>
+  <li><strong>22_gateway_bypass_blocked.png:</strong> Proves network segmentation and <code>iptables</code> rules block direct DMZ routing.</li>
+</ul>
+<img src="22_gateway_bypass_blocked.png" alt="22_gateway_bypass_blocked">
+<ul>
+  <li><strong>23_python_rce_blocked.png:</strong> Validates Python <code>subprocess</code> strict allowlist rejecting Netcat payload.</li>
+</ul>
+<img src="23_python_rce_blocked.png" alt="23_python_rce_blocked">
+<ul>
+  <li><strong>24_python_rce_logs.png:</strong> Server-side log validation of blocked payload execution.</li>
+</ul>
+<img src="24_python_rce_logs.png" alt="24_python_rce_logs">
 
----
+<hr>
 
 <h1 id="config">⚙️ Infrastructure (FULL CONFIG)</h1>
 
-### Orchestration Layout (`docker-compose.yml`)
+<h3>Orchestration Layout (<code>docker-compose.yml</code>)</h3>
 
-```yaml
-services:
+<pre><code>services:
   attacker-kali:
     image: kalilinux/kali-rolling
     container_name: attacker-kali
@@ -285,7 +327,7 @@ services:
   victim-ubuntu:
     image: ubuntu:latest
     container_name: victim-ubuntu
-    command: /bin/bash -c "apt-get update && apt-get install -y curl netcat-traditional && tail -f /dev/null"
+    command: /bin/bash -c "apt-get update &amp;&amp; apt-get install -y curl netcat-traditional &amp;&amp; tail -f /dev/null"
     networks:
       dmz_net:
         ipv4_address: 192.168.241.99
@@ -408,28 +450,30 @@ networks:
     ipam:
       config:
         - subnet: 192.168.243.0/24
-```
+</code></pre>
 
----
+<hr>
 
 <h1 id="findings">🚨 FINDINGS</h1>
 
-## 🔴 Finding 1 — Information Disclosure (Gateway)
+<h2>🔴 Finding 1 — Information Disclosure (Gateway)</h2>
 
-### Evidence
-- HTTP headers expose server version
-- Nginx default banner visible (See Figure 7 telemetry).
+<h3>Evidence</h3>
+<ul>
+  <li>HTTP headers expose server version</li>
+  <li>Nginx default banner visible (See Figure 7 telemetry).</li>
+</ul>
 
-### Impact
-Attackers can fingerprint infrastructure and target known CVEs via Open-Source intelligence gathering.
+<h3>Impact</h3>
+<p>Attackers can fingerprint infrastructure and target known CVEs via Open-Source intelligence gathering.</p>
 
----
+<hr>
 
-## 🔴 Finding 2 — Command Injection (Custom Service)
+<h2>🔴 Finding 2 — Command Injection (Custom Service)</h2>
 
-### Vulnerable Daemon Source Code (`web.py`)
-```python
-#!/usr/bin/env python3
+<h3>Vulnerable Daemon Source Code (<code>web.py</code>)</h3>
+
+<pre><code>#!/usr/bin/env python3
 import http.server
 import urllib.parse
 import os
@@ -439,10 +483,10 @@ class VulnerableCommandHandler(http.server.BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header("Content-type", "text/plain")
         self.end_headers()
-        
+
         parsed_url = urllib.parse.urlparse(self.path)
         query = urllib.parse.parse_qs(parsed_url.query)
-        
+
         # CRITICAL FLAW: Unvalidated OS Popen execution
         if "cmd" in query:
             try:
@@ -459,98 +503,101 @@ if __name__ == "__main__":
     audit_daemon = http.server.HTTPServer(server_address, VulnerableCommandHandler)
     print("Initializing Vulnerable Target Core Service on Port 8080...")
     audit_daemon.serve_forever()
-```
+</code></pre>
 
-### Impact
-- Remote Code Execution (RCE)
-- Full container root compromise
-- Potential lateral movement into internal DMZ application networks
+<h3>Impact</h3>
+<ul>
+  <li>Remote Code Execution (RCE)</li>
+  <li>Full container root compromise</li>
+  <li>Potential lateral movement into internal DMZ application networks</li>
+</ul>
 
----
+<hr>
 
-<h1 id="remediation">🔒 FIXES & REMEDIATION</h1>
+<h1 id="remediation">🔒 FIXES &amp; REMEDIATION</h1>
 
----
+<hr>
 
-## ✅ Fix 1 — Remove Information Disclosure
+<h2>✅ Fix 1 — Remove Information Disclosure</h2>
 
-**Gateway Banner Suppression (Mitigates CWE-200)**
+<p><strong>Gateway Banner Suppression (Mitigates CWE-200)</strong></p>
 
-```nginx
-http {
+<pre><code>http {
     # Suppresses specific version signatures from returned headers globally
     server_tokens off;
 }
-```
+</code></pre>
 
-### Result
-- Removes version leakage from the `dmz-gateway` perimeter.
-- Reduces fingerprinting capability.
+<h3>Result</h3>
+<ul>
+  <li>Removes version leakage from the <code>dmz-gateway</code> perimeter.</li>
+  <li>Reduces fingerprinting capability.</li>
+</ul>
 
----
+<hr>
 
-## ✅ Fix 2 — Eliminate Command Injection & Privilege Escalation
+<h2>✅ Fix 2 — Eliminate Command Injection &amp; Privilege Escalation</h2>
 
-**Microservice Privilege Escalation Lockdown (Mitigates CWE-78)**
+<p><strong>Microservice Privilege Escalation Lockdown (Mitigates CWE-78)</strong></p>
 
-```yaml
-services:
+<pre><code>services:
   victim-ubuntu:
     image: ubuntu:latest
     container_name: victim-ubuntu
     # Strips administrative capabilities and sets immutable file structures
     user: "1001:1001"
     read_only: true
-```
+</code></pre>
 
-### Result
-- Drops payload execution capabilities.
-- Prevents malicious file writes to the backend root directory.
+<h3>Result</h3>
+<ul>
+  <li>Drops payload execution capabilities.</li>
+  <li>Prevents malicious file writes to the backend root directory.</li>
+</ul>
 
----
+<hr>
 
 <h1 id="monitor">📊 IDS MONITORING</h1>
 
-- IDS (Suricata) deployed on external boundary interface.
-- Detection deficit discovered due to lack of network interface port-mirroring.
-- Logging baseline proved void: `eve.json` missing (See Figures 19 & 20 telemetry).
+<ul>
+  <li>IDS (Suricata) deployed on external boundary interface.</li>
+  <li>Detection deficit discovered due to lack of network interface port-mirroring.</li>
+  <li>Logging baseline proved void: <code>eve.json</code> missing (See Figures 19 &amp; 20 telemetry).</li>
+</ul>
 
----
+</div>
 
-<br><br><br> </div> <div id="imageModal" class="modal">
+<div id="imageModal" class="modal">
   <span class="close-modal">&times;</span>
-  <img class="modal-content" id="expandedImg">
+  <img class="modal-content" id="expandedImg" alt="">
 </div>
 
 <script>
 window.addEventListener('load', function() {
     var modal = document.getElementById("imageModal");
     var modalImg = document.getElementById("expandedImg");
-    var images = document.querySelectorAll("img"); // Selects all images globally
+    var images = document.querySelectorAll(".content img");
     var closeBtn = document.querySelector(".close-modal");
 
-    // Attach click events to all images
     images.forEach(function(img) {
         img.onclick = function() {
             if (modal) {
                 modal.style.display = "block";
                 modalImg.src = this.src;
             }
-        }
+        };
     });
 
-    // Close modal when X is clicked
     if (closeBtn) {
         closeBtn.onclick = function() {
             modal.style.display = "none";
-        }
+        };
     }
 
-    // Close modal when clicking background
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
         }
-    }
+    };
 });
 </script>
