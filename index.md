@@ -523,30 +523,34 @@ services:
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-  var modal = document.getElementById("imageModal");
-  var modalImg = document.getElementById("expandedImg");
-  var images = document.querySelectorAll(".content img");
-  var closeBtn = document.querySelector(".close-modal");
+window.addEventListener('load', function() {
+    var modal = document.getElementById("imageModal");
+    var modalImg = document.getElementById("expandedImg");
+    var images = document.querySelectorAll("img"); // Selects all images globally
+    var closeBtn = document.querySelector(".close-modal");
 
-  // Attach click events to all images in the content area
-  images.forEach(function(img) {
-    img.onclick = function() {
-      modal.style.display = "block";
-      modalImg.src = this.src; // This now correctly sets the modal image source to the clicked image's source
+    // Attach click events to all images
+    images.forEach(function(img) {
+        img.onclick = function() {
+            if (modal) {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+            }
+        }
+    });
+
+    // Close modal when X is clicked
+    if (closeBtn) {
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+        }
     }
-  });
 
-  // Close modal when X is clicked
-  closeBtn.onclick = function() {
-    modal.style.display = "none";
-  }
-
-  // Close modal when clicking anywhere on the black background
-  window.onclick = function(event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
+    // Close modal when clicking background
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
     }
-  }
 });
 </script>
