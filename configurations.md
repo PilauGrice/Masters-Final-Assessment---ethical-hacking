@@ -1,14 +1,22 @@
 ---
+
 layout: default
 title: "Lab Configurations"
 permalink: /configurations/
----
+---------------------------
 
 # 💻 Lab Infrastructure Configurations
 
 [⬅️ Return to Main Telemetry Dashboard](/)
 
-### Orchestration Script (`docker-compose.yml`)
+## Overview
+
+This page documents the Docker-based cyber security lab infrastructure, including network segmentation, container roles, and orchestration configuration.
+
+---
+
+## Docker Compose Configuration
+
 ```yaml
 services:
   attacker-kali:
@@ -151,3 +159,33 @@ networks:
     ipam:
       config:
         - subnet: 192.168.243.0/24
+```
+
+---
+
+## Network Architecture
+
+| Network  | Subnet           | Purpose                  |
+| -------- | ---------------- | ------------------------ |
+| External | 192.168.240.0/24 | Public-facing services   |
+| DMZ      | 192.168.241.0/24 | Exposed application tier |
+| Internal | 192.168.242.0/24 | Backend services         |
+| Admin    | 192.168.243.0/24 | Administrative systems   |
+
+---
+
+## Container Roles
+
+| Container        | Function                                |
+| ---------------- | --------------------------------------- |
+| attacker-kali    | Security testing workstation            |
+| victim-dvwa      | Deliberately vulnerable web application |
+| victim-juiceshop | Modern vulnerable web application       |
+| victim-ubuntu    | General Linux target                    |
+| dmz-gateway      | Reverse proxy and ingress controller    |
+| internal-web     | Internal web server                     |
+| internal-db      | Backend database                        |
+| admin-service    | Administrative web application          |
+| admin-network    | Administrative network gateway          |
+| suricata         | IDS/Network monitoring                  |
+|                  |                                         |
