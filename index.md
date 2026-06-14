@@ -1,25 +1,28 @@
 ---
-
 layout: default
+title: Home
 permalink: /
-title: "Technical Appendix"
----------------------------
+---
 
-# Technical Appendix: Containerized DMZ Security Audit Lab
+# 🧪 Containerized Security Audit Lab
 
-**Student ID:** 2512782
-**Module:** Advanced Network Security (MSc Computer Science)
-**Academic Term:** Final Assessment
-**Platform Environment:** Local Docker Sandbox Infrastructure
-**Date:** June 2026
+Welcome to the lab environment documentation portal.
+
+## Quick Navigation
+
+- 📦 [Lab Configurations](/configurations/)
+- 🔒 [Remediations](/remediations/)
 
 ---
 
-## 📁 Repository Overview
+## Overview
 
-This repository serves as the official technical evidence repository for the final multi-subnet penetration testing assessment. It archives environmental verification logs, configuration architectures, screenshots, and supporting documentation used throughout the assessment.
+This site documents a segmented Docker security lab including:
 
----
+- DMZ architecture
+- Vulnerable applications (DVWA, Juice Shop)
+- IDS monitoring (Suricata)
+- Internal services and admin networks
 
 ## 🖼️ Telemetry & Evidence Index
 
