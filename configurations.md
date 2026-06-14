@@ -3,7 +3,7 @@
 layout: default
 title: "Lab Configurations"
 permalink: /configurations/
----------------------------
+---
 
 # 💻 Lab Infrastructure Configurations
 
