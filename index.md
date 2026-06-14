@@ -250,6 +250,16 @@ This dashboard serves as the official, unedited technical evidence locker for th
 ![10_suricata_empty_logs](10_suricata_empty_logs.png)
 ![11_suricata_directory_la](11_suricata_directory_la.png)
 
+### Phase 6: Mitigation & Re-test Validation
+* **21_nginx_banner_fixed.png:** Confirms `server_tokens off;` successfully masks proxy version.
+![21_nginx_banner_fixed](21_nginx_banner_fixed.png)
+* **22_gateway_bypass_blocked.png:** Proves network segmentation and `iptables` rules block direct DMZ routing.
+![22_gateway_bypass_blocked](22_gateway_bypass_blocked.png)
+* **23_python_rce_blocked.png:** Validates Python `subprocess` strict allowlist rejecting Netcat payload.
+![23_python_rce_blocked](23_python_rce_blocked.png)
+* **24_python_rce_logs.png:** Server-side log validation of blocked payload execution.
+![24_python_rce_logs](24_python_rce_logs.png)
+
 ---
 
 <h1 id="config">⚙️ Infrastructure (FULL CONFIG)</h1>
