@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ page.title }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #0f172a;
+      color: #e2e8f0;
+    }
+
+    header {
+      background: #111827;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 18px;
+      margin: 0;
+    }
+
+    nav a {
+      color: #93c5fd;
+      margin-left: 15px;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 30px;
+      background: #111827;
+      min-height: 100vh;
+    }
+
+    code, pre {
+      background: #0b1220;
+      padding: 10px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    table, th, td {
+      border: 1px solid #334155;
+    }
+
+    th, td {
+      padding: 8px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>🛡️ Security Lab Portal</h1>
+
+  <nav>
+    <a href="/">Home</a>
+    <a href="/configurations/">Configurations</a>
+    <a href="/remediations/">Remediations</a>
+  </nav>
+</header>
+
+<div class="container">
+  {{ content }}
+</div>
+
+</body>
+</html>
