@@ -1,15 +1,12 @@
 ---
-
 layout: default
 title: "Remediations & Source Code"
 permalink: /remediations/
--------------------------
-
+----
 # 🔒 Vulnerable Source Code & Remediation Guidance
 
 [⬅️ Return to Main Telemetry Dashboard](/)
 
----
 
 ## Vulnerable Python Service
 
