@@ -5,7 +5,18 @@ permalink: /
 ---
 
 <style>
-/* Base Styles & Layout Fixes */
+/* ── Reset theme wrappers injected by GitHub Pages ── */
+.page-content,
+.wrapper,
+.post,
+.home,
+main[role="main"] {
+  padding: 0 !important;
+  margin: 0 !important;
+  max-width: none !important;
+  width: 100% !important;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -15,9 +26,13 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   background: #0d1117;
   color: #c9d1d9;
+  overflow-x: hidden;
 }
 
-header {
+header.site-header { display: none; }
+footer.site-footer { display: none; }
+
+#top-bar {
   position: sticky;
   top: 0;
   background: #161b22;
@@ -28,16 +43,18 @@ header {
   box-shadow: 0 4px 12px rgba(0,0,0,0.5);
 }
 
+/* ── Sidebar ── */
 .sidebar {
   position: fixed;
   top: 55px;
   left: 0;
   width: 240px;
-  height: 100%;
+  height: calc(100vh - 55px);
   background: #161b22;
   border-right: 1px solid #30363d;
   padding: 20px;
   overflow-y: auto;
+  z-index: 900;
 }
 
 .sidebar strong {
@@ -55,7 +72,6 @@ header {
   text-decoration: none;
   margin: 10px 0;
   font-size: 14px;
-  transition: color 0.2s ease;
 }
 
 .sidebar a:hover {
@@ -63,10 +79,15 @@ header {
   text-decoration: underline;
 }
 
+/* ── Main content — key fix: width + overflow ── */
 .content {
   margin-left: 240px;
   padding: 30px;
+  /* Clamp to viewport minus sidebar; never let children escape */
+  width: calc(100vw - 240px);
   max-width: calc(100vw - 240px);
+  overflow-x: hidden;
+  min-height: 100vh;
 }
 
 h1, h2, h3, h4 {
@@ -76,7 +97,7 @@ h1, h2, h3, h4 {
   margin-top: 30px;
 }
 
-/* Image & Lightbox Styles */
+/* ── Images ── */
 img {
   max-width: 100%;
   height: auto;
@@ -84,24 +105,30 @@ img {
   margin: 15px 0;
   border-radius: 6px;
   cursor: zoom-in;
-  transition: transform 0.2s;
+  display: block;
 }
 
 img:hover {
-  transform: scale(1.01);
   border-color: #58a6ff;
 }
 
-/* Overlap Fixes for Code Blocks */
+/* ── Code blocks — must not exceed parent width ── */
 pre {
   background: #0d1117!important;
   padding: 15px!important;
   display: block!important;
+  /* scroll horizontally inside the box instead of pushing layout */
   overflow-x: auto!important;
+  /* hard cap at parent width */
+  max-width: 100%!important;
+  width: 100%!important;
   border: 1px solid #30363d!important;
   border-left: 4px solid #58a6ff!important;
   border-radius: 6px!important;
-  max-width: 100%!important;
+  margin: 15px 0!important;
+  /* prevent text from forcing the box wider */
+  word-break: break-all;
+  white-space: pre-wrap;
 }
 
 code {
@@ -110,6 +137,15 @@ code {
   color: #e6edf3;
 }
 
+/* Keep inline code from wrapping weirdly */
+p code, li code {
+  background: #1c2128;
+  padding: 2px 5px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+/* ── Terminal block ── */
 .terminal {
   background: #05080c;
   border: 1px solid #30363d;
@@ -124,17 +160,14 @@ code {
   white-space: pre;
 }
 
-/* Modal (Lightbox) Background */
+/* ── Lightbox ── */
 .modal {
   display: none;
   position: fixed;
   z-index: 2000;
   padding-top: 60px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
   background-color: rgba(0,0,0,0.9);
   backdrop-filter: blur(5px);
 }
@@ -151,25 +184,19 @@ code {
 
 .close-modal {
   position: absolute;
-  top: 15px;
-  right: 35px;
+  top: 15px; right: 35px;
   color: #f1f1f1;
   font-size: 40px;
   font-weight: bold;
   cursor: pointer;
-  transition: 0.3s;
 }
 
-.close-modal:hover,
-.close-modal:focus {
-  color: #58a6ff;
-  text-decoration: none;
-}
+.close-modal:hover { color: #58a6ff; }
 </style>
 
-<header>
+<div id="top-bar">
   <strong>🛡️ Security Lab — Elite Submission Dashboard</strong>
-</header>
+</div>
 
 <div class="sidebar">
   <strong>Navigation</strong>
@@ -516,8 +543,6 @@ if __name__ == "__main__":
 
 <h1 id="remediation">🔒 FIXES &amp; REMEDIATION</h1>
 
-<hr>
-
 <h2>✅ Fix 1 — Remove Information Disclosure</h2>
 
 <p><strong>Gateway Banner Suppression (Mitigates CWE-200)</strong></p>
@@ -581,10 +606,8 @@ window.addEventListener('load', function() {
 
     images.forEach(function(img) {
         img.onclick = function() {
-            if (modal) {
-                modal.style.display = "block";
-                modalImg.src = this.src;
-            }
+            modal.style.display = "block";
+            modalImg.src = this.src;
         };
     });
 
