@@ -124,7 +124,6 @@ pre {
   border: 1px solid #30363d!important;
   border-left: 4px solid #58a6ff!important;
   border-radius: 6px!important;
-  margin: 15px 0!important;
   /* prevent text from forcing the box wider */
   word-break: break-all;
   white-space: pre-wrap;
@@ -142,6 +141,11 @@ p code, li code {
   border-radius: 4px;
   white-space: nowrap;
 }
+
+  code, pre
+  {
+    padding:0!important;
+  }
 
 /* ── Terminal block ── */
 .terminal {
