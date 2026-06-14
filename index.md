@@ -342,6 +342,8 @@ p code, li code {
   attacker-kali:
     image: kalilinux/kali-rolling
     container_name: attacker-kali
+    cap_add:
+      - NET_ADMIN
     tty: true
     stdin_open: true
     command: /bin/bash
@@ -353,10 +355,11 @@ p code, li code {
       dmz_net:
         ipv4_address: 192.168.241.50
 
-  victim-ubuntu:
+victim-ubuntu:
     image: ubuntu:latest
     container_name: victim-ubuntu
-    command: /bin/bash -c "apt-get update &amp;&amp; apt-get install -y curl netcat-traditional &amp;&amp; tail -f /dev/null"
+    user: "1001:1001"
+    read_only: true
     networks:
       dmz_net:
         ipv4_address: 192.168.241.99
