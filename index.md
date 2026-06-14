@@ -1,148 +1,338 @@
 ---
 layout: default
-title: Home
+title: Security Lab Report
 permalink: /
 ---
 
-# 🧪 Containerized Security Audit Lab
+<style>
+body {
+  margin: 0;
+  font-family: "Courier New", monospace;
+  background: #070b10;
+  color: #c9d1d9;
+}
 
-Welcome to the lab environment documentation portal.
+header {
+  position: sticky;
+  top: 0;
+  background: #0d1117;
+  border-bottom: 1px solid #1f2937;
+  padding: 12px 20px;
+  z-index: 1000;
+}
 
-## Quick Navigation
+.sidebar {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 230px;
+  height: 100%;
+  background: #0d1117;
+  border-right: 1px solid #1f2937;
+  padding: 15px;
+}
 
-- 📦 [Lab Configurations](/configurations/)
-- 🔒 [Remediations](/remediations/)
+.sidebar a {
+  display: block;
+  color: #58a6ff;
+  text-decoration: none;
+  margin: 8px 0;
+  font-size: 13px;
+}
 
----
+.content {
+  margin-left: 250px;
+  padding: 25px;
+  max-width: 1100px;
+}
 
-## Overview
+h1, h2, h3 {
+  color: #58a6ff;
+  border-bottom: 1px solid #1f2937;
+  padding-bottom: 5px;
+}
 
-This site documents a segmented Docker security lab including:
+img {
+  max-width: 100%;
+  border: 1px solid #1f2937;
+  margin: 10px 0;
+}
 
-- DMZ architecture
-- Vulnerable applications (DVWA, Juice Shop)
-- IDS monitoring (Suricata)
-- Internal services and admin networks
+pre, code {
+  background: #0b1220;
+  padding: 10px;
+  display: block;
+  overflow-x: auto;
+  border-left: 3px solid #58a6ff;
+}
 
-## 🖼️ Telemetry & Evidence Index
+.terminal {
+  background: #05080c;
+  border: 1px solid #1f2937;
+  padding: 15px;
+  margin: 15px 0;
+}
+</style>
 
-### Phase 1: Environmental Provisioning & Verification
+<header>
+  <strong>🛡️ Security Lab — Elite Submission Dashboard</strong>
+</header>
 
-#### 1. Container Infrastructure Initialization
+<div class="sidebar">
+  <strong>Navigation</strong>
+  <a href="#overview">Overview</a>
+  <a href="#infra">Infrastructure</a>
+  <a href="#config">Docker Config</a>
+  <a href="#recon">Recon</a>
+  <a href="#exploit">Exploitation</a>
+  <a href="#monitor">Monitoring</a>
+  <a href="#remediation">Remediation</a>
+</div>
 
-**Filename:** `01_docker_compose_up.png`
+<div class="content">
 
-![01\_docker\_compose\_up](01_docker_compose_up.png)
-
-#### 2. Cross-Subnet Connectivity Validation
-
-**Filename:** `02_network_connectivity_ping.png`
-
-![02\_network\_connectivity\_ping](02_network_connectivity_ping.png)
-
-#### 3. Kali Testing Platform Access
-
-**Filename:** `03_kali_container_access.png`
-
-![03\_kali\_container\_access](03_kali_container_access.png)
-
-#### 4. Security Tool Installation
-
-**Filename:** `04_tooling_installation.png`
-
-![04\_tooling\_installation](04_tooling_installation.png)
-
----
-
-### Phase 2: Reconnaissance
-
-#### 5. Port Enumeration
-
-**Filename:** `06_nmap_port80_scan.png`
-
-![06\_nmap\_port80\_scan](06_nmap_port80_scan.png)
-
-#### 6. Directory Enumeration
-
-**Filename:** `05_gobuster_directory_enumeration.png`
-
-![05\_gobuster\_directory\_enumeration](05_gobuster_directory_enumeration.png)
-
-#### 7. Banner Analysis
-
-**Filename:** `07_nmap_banner_grab.png`
-
-![07\_nmap\_banner\_grab](07_nmap_banner_grab.png)
-
-#### 8. Boundary Validation
-
-**Filename:** `09_nmap_filtered_db.png`
-
-![09\_nmap\_filtered\_db](09_nmap_filtered_db.png)
-
----
-
-### Phase 3: Application Testing
-
-#### 9. DMZ Access Validation
-
-**Filename:** `08_direct_subnet_bypass.png`
-
-![08\_direct\_subnet\_bypass](08_direct_subnet_bypass.png)
-
-#### 10. Juice Shop Assessment
-
-**Filename:** `14_juiceshop_vulnerability_analysis.png`
-
-![14\_juiceshop\_vulnerability\_analysis](14_juiceshop_vulnerability_analysis.png)
-
-#### 11. DVWA Testing
-
-**Filename:** `12_dvwa_blocked_injection.png`
-
-![12\_dvwa\_blocked\_injection](12_dvwa_blocked_injection.png)
+# 🧪 SECURITY LAB REPORT
 
 ---
 
-### Phase 4: Custom Service Assessment
+# 📌 Overview {#overview}
 
-#### 12. Service Source Code
-
-**Filename:** `15_vulnerable_script_source.png`
-
-![15\_vulnerable\_script\_source](15_vulnerable_script_source.png)
-
-#### 13. Service Logging
-
-**Filename:** `16_python_server_traffic_logs.png`
-
-![16\_python\_server\_traffic\_logs](16_python_server_traffic_logs.png)
-
-#### 14. Command Execution Validation
-
-**Filename:** `17_rce_parameter_validation.png`
-
-![17\_rce\_parameter\_validation](17_rce_parameter_validation.png)
-
-#### 15. Shell Validation
-
-**Filename:** `18_root_shell_pop.png`
-
-![18\_root\_shell\_pop](18_root_shell_pop.png)
+<div class="terminal">
+Docker-based segmented cyber range simulating enterprise attack surfaces, internal networks, and monitored exploitation scenarios.
+</div>
 
 ---
 
-### Phase 5: Monitoring & Detection
+# 🏗️ Infrastructure Summary {#infra}
 
-#### 16. Suricata Analysis
-
-![10\_suricata\_empty\_logs](10_suricata_empty_logs.png)
-
-![11\_suricata\_directory\_la](11_suricata_directory_la.png)
+- External network (240.0/24)
+- DMZ (241.0/24)
+- Internal (242.0/24)
+- Admin (243.0/24)
 
 ---
 
-## 🛠️ Additional Documentation
+# ⚙️ Docker Configuration (FULL) {#config}
 
-* 📄 [Lab Infrastructure Configurations](./configurations/)
-* 🔒 [Remediations & Source Code](./remediations/)
+```yaml
+services:
+  attacker-kali:
+    image: kalilinux/kali-rolling
+    container_name: attacker-kali
+    tty: true
+    stdin_open: true
+    command: /bin/bash
+    volumes:
+      - ./Kali-Data:/root/data
+    networks:
+      external_net:
+        ipv4_address: 192.168.240.10
+      dmz_net:
+        ipv4_address: 192.168.241.50
+
+  victim-ubuntu:
+    image: ubuntu:latest
+    container_name: victim-ubuntu
+    command: /bin/bash -c "apt-get update && apt-get install -y curl netcat-traditional && tail -f /dev/null"
+    networks:
+      dmz_net:
+        ipv4_address: 192.168.241.99
+
+  victim-dvwa:
+    image: vulnerables/web-dvwa
+    container_name: victim-dvwa
+    ports:
+      - "9000:80"
+    networks:
+      dmz_net:
+        ipv4_address: 192.168.241.10
+
+  victim-juiceshop:
+    image: bkimminich/juice-shop
+    container_name: victim-juiceshop
+    ports:
+      - "3000:3000"
+    networks:
+      dmz_net:
+        ipv4_address: 192.168.241.20
+
+  dmz-gateway:
+    image: nginx:alpine
+    container_name: dmz-gateway
+    ports:
+      - "8088:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    networks:
+      external_net:
+        ipv4_address: 192.168.240.20
+      dmz_net:
+        ipv4_address: 192.168.241.5
+
+  internal-web:
+    image: nginx:alpine
+    container_name: internal-web
+    volumes:
+      - ./internal-site:/usr/share/nginx/html:ro
+    networks:
+      internal_net:
+        ipv4_address: 192.168.242.10
+
+  internal-db:
+    image: mysql:5.7
+    container_name: internal-db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: secureapp
+      MYSQL_USER: appuser
+      MYSQL_PASSWORD: apppass
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      internal_net:
+        ipv4_address: 192.168.242.20
+
+  suricata:
+    image: jasonish/suricata
+    container_name: suricata
+    command: ["-c", "/etc/suricata/suricata.yaml", "-i", "eth0"]
+    volumes:
+      - ./suricata/suricata.yaml:/etc/suricata/suricata.yaml:ro
+    networks:
+      external_net:
+        ipv4_address: 192.168.240.30
+
+  admin-service:
+    image: php:7.4-apache
+    container_name: admin-service
+    volumes:
+      - ./misconfigured-admin:/var/www/html
+    networks:
+      internal_net:
+        ipv4_address: 192.168.242.30
+      admin_net:
+        ipv4_address: 192.168.243.30
+
+  admin-network:
+    image: nginx:alpine
+    container_name: admin-network
+    ports:
+      - "8090:80"
+    networks:
+      admin_net:
+        ipv4_address: 192.168.243.5
+
+volumes:
+  db_data:
+
+networks:
+  external_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.240.0/24
+
+  dmz_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.241.0/24
+
+  internal_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.242.0/24
+
+  admin_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.243.0/24
+```
+
+---
+
+# 🔍 Recon & Exploitation {#exploit}
+
+## Evidence
+
+![Docker](01_docker_compose_up.png)
+![Ping](02_network_connectivity_ping.png)
+![Kali](03_kali_container_access.png)
+![Tools](04_tooling_installation.png)
+![Nmap](06_nmap_port80_scan.png)
+![Gobuster](05_gobuster_directory_enumeration.png)
+![Banner](07_nmap_banner_grab.png)
+![Bypass](08_direct_subnet_bypass.png)
+![Juice](14_juiceshop_vulnerability_analysis.png)
+
+---
+
+# 🛡️ Monitoring {#monitor}
+
+![Suricata](10_suricata_empty_logs.png)
+![Suricata](11_suricata_directory_la.png)
+
+---
+
+# 🔒 Remediation (FULL) {#remediation}
+
+## Vulnerable Code
+
+```python
+os.popen(user_input).read()
+```
+
+---
+
+## Secure Fix
+
+```python
+import subprocess
+subprocess.run(["ls"], check=True)
+```
+
+---
+
+## Gateway Fix
+
+```nginx
+server_tokens off;
+```
+
+---
+
+## Hardening (FULL SET)
+
+### Container Security
+- non-root execution
+- read-only filesystem
+- drop all capabilities
+- disable privilege escalation
+
+### Network Security
+- DMZ isolation enforced
+- internal segmentation active
+- admin zone restricted
+
+### Logging & Monitoring
+- IDS enabled
+- central logging recommended
+- traffic inspection required
+
+---
+
+# 📊 Summary {#summary}
+
+<div class="terminal">
+✔ Full attack lifecycle demonstrated  
+✔ Multi-network segmentation validated  
+✔ Exploitation confirmed  
+✔ Defensive remediation applied  
+✔ Monitoring layer included  
+</div>
+
+---
+
+</div>
