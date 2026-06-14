@@ -80,15 +80,6 @@ footer.site-footer { display: none; }
 }
 
 /* ── Main content — key fix: width + overflow ── */
-.content {
-  margin-left: 240px;
-  padding: 30px;
-  /* Clamp to viewport minus sidebar; never let children escape */
-  width: calc(100vw - 240px);
-  max-width: calc(100vw - 240px);
-  overflow-x: hidden;
-  min-height: 100vh;
-}
 
 h1, h2, h3, h4 {
   color: #58a6ff;
