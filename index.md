@@ -558,6 +558,8 @@ if __name__ == "__main__":
 }
 </code></pre>
 
+See Figure21
+
 <h3>Result</h3>
 <ul>
   <li>Removes version leakage from the <code>dmz-gateway</code> perimeter.</li>
