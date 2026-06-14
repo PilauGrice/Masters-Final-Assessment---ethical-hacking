@@ -327,7 +327,7 @@ p code, li code {
 
 <h1 id="config">⚙️ Infrastructure (FULL CONFIG)</h1>
 
-<h3>Orchestration Layout (<code>docker-compose.yml</code>)</h3>
+<h3> (<code>docker-compose.yml</code>)</h3>
 
 <pre><code>services:
   attacker-kali:
