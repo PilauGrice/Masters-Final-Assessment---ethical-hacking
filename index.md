@@ -5,84 +5,164 @@ permalink: /
 ---
 
 <style>
+/* Base Styles & Layout Fixes */
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  font-family: "Courier New", monospace;
-  background: #070b10;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  background: #0d1117;
   color: #c9d1d9;
 }
 
 header {
   position: sticky;
   top: 0;
-  background: #0d1117;
-  border-bottom: 1px solid #1f2937;
-  padding: 12px 20px;
+  background: #161b22;
+  border-bottom: 1px solid #30363d;
+  padding: 15px 20px;
   z-index: 1000;
+  font-family: "Courier New", monospace;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
 }
 
 .sidebar {
   position: fixed;
-  top: 60px;
+  top: 55px;
   left: 0;
-  width: 230px;
+  width: 240px;
   height: 100%;
-  background: #0d1117;
-  border-right: 1px solid #1f2937;
-  padding: 15px;
+  background: #161b22;
+  border-right: 1px solid #30363d;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.sidebar strong {
+  color: #8b949e;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  display: block;
 }
 
 .sidebar a {
   display: block;
   color: #58a6ff;
   text-decoration: none;
-  margin: 8px 0;
-  font-size: 13px;
+  margin: 10px 0;
+  font-size: 14px;
+  transition: color 0.2s ease;
 }
 
 .sidebar a:hover {
+  color: #79c0ff;
   text-decoration: underline;
 }
 
 .content {
-  margin-left: 250px;
-  padding: 25px;
-  max-width: 1100px;
+  margin-left: 240px;
+  padding: 30px;
+  max-width: calc(100vw - 240px);
 }
 
 h1, h2, h3, h4 {
   color: #58a6ff;
-  border-bottom: 1px solid #1f2937;
-  padding-bottom: 5px;
+  border-bottom: 1px solid #21262d;
+  padding-bottom: 8px;
+  margin-top: 30px;
 }
 
+/* Image & Lightbox Styles */
 img {
   max-width: 100%;
-  border: 1px solid #1f2937;
-  margin: 10px 0;
-  border-radius: 4px;
+  height: auto;
+  border: 1px solid #30363d;
+  margin: 15px 0;
+  border-radius: 6px;
+  cursor: zoom-in;
+  transition: transform 0.2s;
 }
 
+img:hover {
+  transform: scale(1.01);
+  border-color: #58a6ff;
+}
+
+/* Overlap Fixes for Code Blocks */
 pre {
-  background: #0b1220;
-  padding: 15px;
-  display: block;
-  overflow-x: auto;
-  border-left: 3px solid #58a6ff;
-  border-radius: 4px;
+  background: #0d1117 !important;
+  padding: 15px !important;
+  display: block !important;
+  overflow-x: auto !important;
+  border: 1px solid #30363d !important;
+  border-left: 4px solid #58a6ff !important;
+  border-radius: 6px !important;
+  max-width: 100% !important;
 }
 
 code {
-  font-family: "Courier New", monospace;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 13px;
+  color: #e6edf3;
 }
 
 .terminal {
   background: #05080c;
-  border: 1px solid #1f2937;
+  border: 1px solid #30363d;
   padding: 15px;
-  margin: 15px 0;
-  border-radius: 4px;
+  margin: 20px 0;
+  border-radius: 6px;
   color: #39ff14;
+  font-family: "Courier New", monospace;
+  line-height: 1.6;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+/* Modal (Lightbox) Background */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgba(0,0,0,0.9);
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 85vh;
+  object-fit: contain;
+  border: none;
+  cursor: zoom-out;
+}
+
+.close-modal {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+  color: #58a6ff;
+  text-decoration: none;
 }
 </style>
 
@@ -92,13 +172,12 @@ code {
 
 <div class="sidebar">
   <strong>Navigation</strong>
-  <a href="#overview">Overview</a>
-  <a href="#evidence">Telemetry Evidence</a>
-  <a href="#config">Infrastructure Config</a>
-  <a href="#findings">Vulnerability Findings</a>
-  <a href="#monitor">IDS Monitoring</a>
-  <a href="#remediation">Remediation Code</a>
-  <a href="#summary">Summary</a>
+  <a href="#overview">📌 Overview</a>
+  <a href="#evidence">🖼️ Telemetry Evidence</a>
+  <a href="#config">⚙️ Infrastructure Config</a>
+  <a href="#findings">🚨 Vulnerability Findings</a>
+  <a href="#monitor">📊 IDS Monitoring</a>
+  <a href="#remediation">🔒 Remediation Code</a>
 </div>
 
 <div class="content" markdown="1">
@@ -112,7 +191,8 @@ code {
 <h1 id="overview">📌 Overview</h1>
 
 <div class="terminal" markdown="1">
-Docker-based multi-network cyber range simulating enterprise segmentation, vulnerable services, and monitored exploitation lifecycle.
+[RANGE LOG] Docker-based multi-network cyber range online.
+[RANGE LOG] Simulating enterprise segmentation, vulnerable services, and monitored exploitation lifecycle.
 </div>
 
 This dashboard serves as the official, unedited technical evidence locker for the final multi-subnet penetration testing assessment. It archives high-resolution image telemetry, custom exploit targets, and configuration architectures to support the core report submission.
@@ -120,6 +200,8 @@ This dashboard serves as the official, unedited technical evidence locker for th
 ---
 
 <h1 id="evidence">🖼️ Telemetry & Exploitation Evidence Index</h1>
+
+*(Click any image to expand it in full screen)*
 
 ### Phase 1: Environmental Provisioning
 * **01_docker_compose_up.png:** Confirms error-free execution of the orchestration engine.
@@ -376,7 +458,7 @@ if __name__ == "__main__":
 
 ---
 
-<h1 id="remediation">🔁 FIXES FOR FINDINGS</h1>
+<h1 id="remediation">🔒 FIXES & REMEDIATION</h1>
 
 ---
 
@@ -417,7 +499,7 @@ services:
 
 ---
 
-<h1 id="monitor">🛡️ MONITORING</h1>
+<h1 id="monitor">📊 IDS MONITORING</h1>
 
 - IDS (Suricata) deployed on external boundary interface.
 - Detection deficit discovered due to lack of network interface port-mirroring.
@@ -425,14 +507,33 @@ services:
 
 ---
 
-<h1 id="summary">📊 SUMMARY</h1>
-
-<div class="terminal" markdown="1">
-✔ 3 Critical findings identified and mapped to CWE/CVSS standards.  
-✔ Exploitation paths and direct subnet bypass validated.  
-✔ Network segmentation boundaries tested.  
-✔ Secure code and configuration remediation applied.  
-✔ Attack surface systematically reduced.  
+</div> <div id="imageModal" class="modal">
+  <span class="close-modal">&times;</span>
+  <img class="modal-content" id="expandedImg">
 </div>
 
-</div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  var modal = document.getElementById("imageModal");
+  var modalImg = document.getElementById("expandedImg");
+  var images = document.querySelectorAll(".content img");
+  var closeBtn = document.querySelector(".close-modal");
+
+  images.forEach(function(img) {
+    img.onclick = function() {
+      modal.style.display = "block";
+      modalImg.src = this.src;
+    }
+  });
+
+  closeBtn.onclick = function() {
+    modal.style.display = "none";
+  }
+
+  modal.onclick = function(e) {
+    if (e.target !== modalImg) {
+      modal.style.display = "none";
+    }
+  }
+});
+</script>
